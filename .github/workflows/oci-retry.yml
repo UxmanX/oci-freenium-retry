@@ -5,6 +5,9 @@ on:
     # 5分毎に実行 (UTC)
     - cron: "*/5 * * * *"
   workflow_dispatch:
+  push:
+    paths-ignore:
+      - "state.json"
 
 permissions:
   contents: write  # state.json を commit/push するため必要
@@ -64,6 +67,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "state.json に変更はないため commit をスキップします。"
           else
-            git commit -m "chore(state): update state.json [skip ci]"
+            git commit -m "chore(state): update state.json "
             git push
           fi
