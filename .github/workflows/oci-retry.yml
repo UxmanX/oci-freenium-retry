@@ -65,5 +65,6 @@ jobs:
             echo "state.json に変更はないため commit をスキップします。"
           else
             git commit -m "chore(state): update state.json"
+            git pull --rebase origin main
             git push
           fi
